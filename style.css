@@ -145,7 +145,10 @@ input[type="text"], input[type="number"] {
 
 input[type="text"]:focus, input[type="number"]:focus {
   outline: none;
-  padding: 15px;
+}
+
+#balance, #incomes, #expenses {
+  transition: .5s;
 }
 
 .blue {

@@ -1,6 +1,9 @@
 const get = (str) => document.querySelector(`${str}`);
 
 const transactionsUl = get('#transactions');
+const transactionsForm = get('#form');
+const inputName = get('#name');
+const inputAmount = get('#amount');
 
 const transactions = [
   { id: 1, name: 'Salary', amount: 1200 },
@@ -44,9 +47,19 @@ const updateIncomesAndExpenses = () => {
 };
 
 const init = () => {
+  transactionsUl.innerHTML = '';
   transactions.forEach(addTransactionIntoDOM);
   updateCurrentBalance();
   updateIncomesAndExpenses();
 };
 
 init();
+
+const generateRandomID = () => Math.round(Math.random() * 100);
+
+transactionsForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const newTransaction = { id: generateRandomID(), name: inputName.value, amount: Number(inputAmount.value) };
+  transactions.push(newTransaction);
+  init();
+});
