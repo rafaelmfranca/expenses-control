@@ -8,7 +8,7 @@ const inputs = getAll('input');
 const localStorageTransactions = JSON.parse(localStorage.getItem('transactions'));
 let transactions = localStorageTransactions ? localStorageTransactions : [];
 
-const addTransactionIntoDOM = ({ name, amount }) => {
+const addTransactionIntoDOM = ({ id, name, amount }) => {
   const liClass = amount > 0 ? 'income' : 'expense';
   const spanClass = amount > 0 ? 'green' : 'red';
   const li = document.createElement('li');
@@ -16,7 +16,7 @@ const addTransactionIntoDOM = ({ name, amount }) => {
   li.classList.add(liClass);
   li.innerHTML = `
     <small>
-      <a class="remove">
+      <a onclick="removeTransaction(${id})" class="remove">
         <i class="fas fa-times fa-xs"></i>
       </a>
       ${name}
@@ -81,6 +81,12 @@ init();
 
 const updateLocalStorage = () => localStorage.setItem('transactions', JSON.stringify(transactions));
 const generateRandomID = () => Math.round(Math.random() * 100);
+
+const removeTransaction = (removeId) => {
+  transactions = transactions.filter(({ id }) => id !== removeId);
+  updateLocalStorage();
+  init();
+};
 
 transactionsForm.addEventListener('submit', (event) => {
   event.preventDefault();
