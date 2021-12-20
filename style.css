@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color:#5b5b5b;
+  font-family: Nunito Sans, sans-serif;
+}
+
+.page-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 75px;
+  background-color: #ab9df2;
+  border-radius: 0px 0px 15px 15px;
+}
+
+.page-header h2 {
+  color: white;
+}
+
+.page-container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px 0;
+  gap: 15px;
+}
+
+.inc-exp-container {
+  padding: 10px;
+  min-width: 300px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
+}
+
+.inc-exp-container hr {
+  border: none;
+  height: 30px;
+  width: 1px;
+  background-color: lightgray;
+}
+
+.transaction-container {
+  padding: 10px;
+  min-width: 400px;
+  border-radius: 10px;
+}
+
+.transaction-container h4 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.transactions li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
+}
+
+.transactions li.positive {
+  border-right: 4px solid #a9dc76;
+}
+
+.transactions li.negative {
+  border-right: 4px solid #ff6188;
+}
+
+.form-add-transaction {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  gap: 15px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
+  border-radius: 10px;
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+}
+
+.add {
+  margin: 0 auto;
+  cursor: pointer;
+  border: none;
+  height: 40px;
+  width: 40px;
+  background-color: #ab9df2;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px;
+  transition: 0.5s;
+}
+
+.add:hover {
+  height: 45px;
+  width: 45px;
+}
+
+label {
+  font-size: 10px;
+}
+
+input[type="text"], input[type="number"] {
+  width: 250px;
+  font-size: 11px;
+  color:#5b5b5b;
+  padding: 12px;
+  border: none;
+  background-color: #fafafa;
+  border-radius: 5px;
+  border-bottom: 1px solid #ab9df2;
+  transition: 0.5s;
+}
+
+input[type="text"]:focus, input[type="number"]:focus {
+  outline: none;
+  padding: 15px;
+}
+
+.blue {
+  color: #78dce8;
+}
+
+.green {
+  color: #a9dc76;
+}
+
+.red {
+  color: #ff6188;
+}
+
+.white {
+  color: white;
+}
