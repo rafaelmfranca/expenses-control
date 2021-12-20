@@ -26,7 +26,6 @@ main {
   width: 100%;
   height: 100px;
   background-color: #ab9df2;
-  border-radius: 0px 0px 15px 15px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
 }
 
@@ -82,11 +81,11 @@ main {
   transition: .5s;
 }
 
-.transactions li.positive {
+.transactions li.income {
   border-right: 4px solid #a9dc76;
 }
 
-.transactions li.negative {
+.transactions li.expense {
   border-right: 4px solid #ff6188;
 }
 
