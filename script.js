@@ -5,11 +5,8 @@ const transactionsUl = get('#transactions');
 const transactionsForm = get('#form');
 const inputs = getAll('input');
 
-const transactions = [
-  { id: 1, name: 'Salary', amount: 1200 },
-  { id: 2, name: 'Market', amount: -300 },
-  { id: 3, name: 'Freelance', amount: 350 },
-];
+const localStorageTransactions = JSON.parse(localStorage.getItem('transactions'));
+let transactions = localStorageTransactions ? localStorageTransactions : [];
 
 const addTransactionIntoDOM = ({ name, amount }) => {
   const liClass = amount > 0 ? 'income' : 'expense';
@@ -74,6 +71,7 @@ const init = () => {
 
 init();
 
+const updateLocalStorage = () => localStorage.setItem('transactions', JSON.stringify(transactions));
 const generateRandomID = () => Math.round(Math.random() * 100);
 
 transactionsForm.addEventListener('submit', (event) => {
@@ -81,6 +79,7 @@ transactionsForm.addEventListener('submit', (event) => {
 
   const newTransaction = { id: generateRandomID(), name: inputs[0].value, amount: Number(inputs[1].value) };
   transactions.push(newTransaction);
+  updateLocalStorage();
 
   inputs[0].value = '';
   inputs[1].value = '';
