@@ -156,6 +156,17 @@ input[type="text"]:focus, input[type="number"]:focus {
   transition: .5s;
 }
 
+.remove {
+  cursor: pointer;
+  opacity: .5;
+  margin-right: 5px;
+}
+
+.remove:hover {
+  color: #ff6188;
+  opacity: 1;
+}
+
 .blue {
   color: #78dce8;
 }

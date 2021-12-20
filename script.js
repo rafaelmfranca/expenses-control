@@ -14,7 +14,15 @@ const addTransactionIntoDOM = ({ name, amount }) => {
   const li = document.createElement('li');
 
   li.classList.add(liClass);
-  li.innerHTML = `<small>${name}</small> <span class="${spanClass}">$ ${Math.abs(amount).toFixed(2)}</span>`;
+  li.innerHTML = `
+    <small>
+      <a class="remove">
+        <i class="fas fa-times fa-xs"></i>
+      </a>
+      ${name}
+    </small>
+    <span class="${spanClass}">$ ${Math.abs(amount).toFixed(2)}</span>
+  `;
 
   transactionsUl.appendChild(li);
 };
