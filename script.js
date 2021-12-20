@@ -21,13 +21,32 @@ const addTransactionIntoDOM = ({ name, amount }) => {
 
 const updateCurrentBalance = () => {
   const currentBalance = get('#balance');
-  const total = transactions.reduce((acc, { amount }) => acc + amount, 0).toFixed(2);
+  const total = transactions
+    .reduce((acc, { amount }) => acc + amount, 0)
+    .toFixed(2);
   currentBalance.textContent = `$ ${total}`;
+};
+
+const updateIncomesAndExpenses = () => {
+  const incomes = get('#incomes');
+  const expenses = get('#expenses');
+  const incomesTotal = transactions
+    .filter(({ amount }) => amount > 0)
+    .reduce((acc, { amount }) => acc + amount, 0)
+    .toFixed(2);
+  const expensesTotal = Math.abs(transactions
+    .filter(({ amount }) => amount < 0)
+    .reduce((acc, { amount }) => acc + amount, 0))
+    .toFixed(2);
+
+  incomes.textContent = `$ ${incomesTotal}`;
+  expenses.textContent = `$ ${expensesTotal}`;
 };
 
 const init = () => {
   transactions.forEach(addTransactionIntoDOM);
   updateCurrentBalance();
+  updateIncomesAndExpenses();
 };
 
 init();
