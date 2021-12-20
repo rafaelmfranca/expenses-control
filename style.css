@@ -11,14 +11,23 @@ body {
   font-family: Nunito Sans, sans-serif;
 }
 
+main {
+  width: 50vw;
+  margin: -30px auto;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
+}
+
 .page-header {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 75px;
+  height: 100px;
   background-color: #ab9df2;
   border-radius: 0px 0px 15px 15px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
 }
 
 .page-header h2 {
@@ -37,7 +46,7 @@ body {
 
 .inc-exp-container {
   padding: 10px;
-  min-width: 300px;
+  width: 80%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -54,7 +63,7 @@ body {
 
 .transaction-container {
   padding: 10px;
-  min-width: 400px;
+  width: 100%;
   border-radius: 10px;
 }
 
@@ -70,6 +79,7 @@ body {
   margin-bottom: 5px;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
+  transition: .5s;
 }
 
 .transactions li.positive {
@@ -87,8 +97,6 @@ body {
   align-items: center;
   padding: 10px;
   gap: 15px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
-  border-radius: 10px;
 }
 
 #form {
@@ -103,20 +111,21 @@ body {
 }
 
 .add {
-  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+  padding: 10px 20px;
   cursor: pointer;
   border: none;
-  height: 40px;
-  width: 40px;
   background-color: #ab9df2;
-  border-radius: 50%;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px;
-  transition: 0.5s;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
+  transition: .5s;
 }
 
 .add:hover {
-  height: 45px;
-  width: 45px;
+  opacity: .8;
 }
 
 label {
@@ -132,7 +141,7 @@ input[type="text"], input[type="number"] {
   background-color: #fafafa;
   border-radius: 5px;
   border-bottom: 1px solid #ab9df2;
-  transition: 0.5s;
+  transition: .5s;
 }
 
 input[type="text"]:focus, input[type="number"]:focus {
