@@ -1,9 +1,9 @@
 const get = (str) => document.querySelector(`${str}`);
+const getAll = (str) => document.querySelectorAll(`${str}`);
 
 const transactionsUl = get('#transactions');
 const transactionsForm = get('#form');
-const inputName = get('#name');
-const inputAmount = get('#amount');
+const inputs = getAll('input');
 
 const transactions = [
   { id: 1, name: 'Salary', amount: 1200 },
@@ -46,11 +46,30 @@ const updateIncomesAndExpenses = () => {
   expenses.textContent = `$ ${expensesTotal}`;
 };
 
+const handleAddTransactionButton = () => {
+  const addButton = get('.add');
+  addButton.classList.add('disabled');
+  addButton.disabled = true;
+
+  inputs.forEach((input) => {
+    input.addEventListener('keyup', () => {
+      if (inputs[0].value.trim() !== '' && inputs[1].value.trim() !== '') {
+        addButton.classList.remove('disabled');
+        addButton.disabled = false;
+      } else {
+        addButton.classList.add('disabled');
+        addButton.disabled = true;
+      }
+    });
+  });
+};
+
 const init = () => {
   transactionsUl.innerHTML = '';
   transactions.forEach(addTransactionIntoDOM);
   updateCurrentBalance();
   updateIncomesAndExpenses();
+  handleAddTransactionButton();
 };
 
 init();
@@ -59,7 +78,11 @@ const generateRandomID = () => Math.round(Math.random() * 100);
 
 transactionsForm.addEventListener('submit', (event) => {
   event.preventDefault();
-  const newTransaction = { id: generateRandomID(), name: inputName.value, amount: Number(inputAmount.value) };
+
+  const newTransaction = { id: generateRandomID(), name: inputs[0].value, amount: Number(inputs[1].value) };
   transactions.push(newTransaction);
+
+  inputs[0].value = '';
+  inputs[1].value = '';
   init();
 });

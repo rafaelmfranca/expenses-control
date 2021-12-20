@@ -109,6 +109,11 @@ main {
   flex-direction: column;
 }
 
+.add.disabled, .add.disabled:hover {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
 .add {
   display: flex;
   justify-content: space-between;
