@@ -27,26 +27,28 @@ const addTransactionIntoDOM = ({ id, name, amount }) => {
   transactionsUl.appendChild(li);
 };
 
-const sumOfTransactions = () => {
-  return transactions
-    .reduce((acc, { amount }) => acc + amount, 0)
-    .toFixed(2);
-};
+const sumOfAllTransactions = () => ( transactions
+  .reduce((acc, { amount }) => acc + amount, 0)
+  .toFixed(2)
+);
 
 const updateCurrentBalance = () => {
   const currentBalance = get('#balance');
-  const total = sumOfTransactions();
+  const total = sumOfAllTransactions();
   
   currentBalance.textContent = `$ ${total}`;
 };
 
+const sumOfIncomes = () => ( transactions
+  .filter(({ amount }) => amount > 0)
+  .reduce((acc, { amount }) => acc + amount, 0)
+  .toFixed(2)
+);
+
 const updateIncomesAndExpenses = () => {
   const incomes = get('#incomes');
   const expenses = get('#expenses');
-  const incomesTotal = transactions
-    .filter(({ amount }) => amount > 0)
-    .reduce((acc, { amount }) => acc + amount, 0)
-    .toFixed(2);
+  const incomesTotal = sumOfIncomes();
   const expensesTotal = Math.abs(transactions
     .filter(({ amount }) => amount < 0)
     .reduce((acc, { amount }) => acc + amount, 0))
