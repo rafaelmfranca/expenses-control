@@ -45,14 +45,17 @@ const sumOfIncomes = () => ( transactions
   .toFixed(2)
 );
 
+const sumOfExpenses = () => ( Math.abs(transactions
+  .filter(({ amount }) => amount < 0)
+  .reduce((acc, { amount }) => acc + amount, 0))
+  .toFixed(2)
+);
+
 const updateIncomesAndExpenses = () => {
   const incomes = get('#incomes');
   const expenses = get('#expenses');
   const incomesTotal = sumOfIncomes();
-  const expensesTotal = Math.abs(transactions
-    .filter(({ amount }) => amount < 0)
-    .reduce((acc, { amount }) => acc + amount, 0))
-    .toFixed(2);
+  const expensesTotal = sumOfExpenses();
 
   incomes.textContent = `$ ${incomesTotal}`;
   expenses.textContent = `$ ${expensesTotal}`;
