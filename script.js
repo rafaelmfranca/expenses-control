@@ -27,11 +27,16 @@ const addTransactionIntoDOM = ({ id, name, amount }) => {
   transactionsUl.appendChild(li);
 };
 
-const updateCurrentBalance = () => {
-  const currentBalance = get('#balance');
-  const total = transactions
+const sumOfTransactions = () => {
+  return transactions
     .reduce((acc, { amount }) => acc + amount, 0)
     .toFixed(2);
+};
+
+const updateCurrentBalance = () => {
+  const currentBalance = get('#balance');
+  const total = sumOfTransactions();
+  
   currentBalance.textContent = `$ ${total}`;
 };
 
