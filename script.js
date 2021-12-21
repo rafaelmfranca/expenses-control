@@ -61,14 +61,10 @@ const updateIncomesAndExpenses = () => {
   expenses.textContent = `$ ${expensesTotal}`;
 };
 
-const handleAddTransactionButton = () => {
-  const addButton = get('.add');
-  addButton.classList.add('disabled');
-  addButton.disabled = true;
-
+const updateAddTransactionBtn = (addButton) => {
   inputs.forEach((input) => {
     input.addEventListener('keyup', () => {
-      if (inputs[0].value.trim() !== '' && inputs[1].value.trim() !== '') {
+      if ([...inputs].every((input) => input.value.trim() !== '')) {
         addButton.classList.remove('disabled');
         addButton.disabled = false;
       } else {
@@ -79,12 +75,20 @@ const handleAddTransactionButton = () => {
   });
 };
 
+const handleAddTransactionBtn = () => {
+  const addButton = get('.add');
+  addButton.classList.add('disabled');
+  addButton.disabled = true;
+
+  updateAddTransactionBtn(addButton);
+};
+
 const init = () => {
   transactionsUl.innerHTML = '';
   transactions.forEach(addTransactionIntoDOM);
   updateCurrentBalance();
   updateIncomesAndExpenses();
-  handleAddTransactionButton();
+  handleAddTransactionBtn();
 };
 
 init();
