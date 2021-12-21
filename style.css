@@ -71,6 +71,20 @@ main {
   margin-bottom: 10px;
 }
 
+.transactions {
+  padding: 10px;
+  max-height: 195px;
+  overflow-y: auto;
+}
+
+.transactions::-webkit-scrollbar {
+  display: none;
+}
+
+.transactions::after {
+  background: linear-gradient(to bottom, transparent, white);
+}
+
 .transactions li {
   display: flex;
   justify-content: space-between;
