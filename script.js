@@ -83,16 +83,6 @@ const handleAddTransactionBtn = () => {
   updateAddTransactionBtn(addButton);
 };
 
-const init = () => {
-  transactionsUl.innerHTML = '';
-  transactions.forEach(addTransactionIntoDOM);
-  updateCurrentBalance();
-  updateIncomesAndExpenses();
-  handleAddTransactionBtn();
-};
-
-init();
-
 const updateLocalStorage = () => localStorage.setItem('transactions', JSON.stringify(transactions));
 const generateRandomID = () => Math.round(Math.random() * 100);
 
@@ -113,3 +103,13 @@ transactionsForm.addEventListener('submit', (event) => {
   inputs[1].value = '';
   init();
 });
+
+const init = () => {
+  transactionsUl.innerHTML = '';
+  transactions.forEach(addTransactionIntoDOM);
+  updateCurrentBalance();
+  updateIncomesAndExpenses();
+  handleAddTransactionBtn();
+};
+
+window.onload = () => init();
