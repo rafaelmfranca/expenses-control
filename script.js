@@ -83,6 +83,13 @@ const handleAddTransactionBtn = () => {
   updateAddTransactionBtn(addButton);
 };
 
+const addNewTransaction = () => {
+  const nameInput = inputs[0].value;
+  const amountInput = Number(inputs[1].value);
+  const newTransaction = { id: generateRandomID(), name: nameInput, amount: amountInput };
+  transactions.push(newTransaction);
+}
+
 const removeTransaction = (removeId) => {
   transactions = transactions.filter(({ id }) => id !== removeId);
   init();
@@ -95,10 +102,7 @@ const clearInputs = () => inputs.forEach((input) => input.value = '');
 
 transactionsForm.addEventListener('submit', (event) => {
   event.preventDefault();
-
-  const newTransaction = { id: generateRandomID(), name: inputs[0].value, amount: Number(inputs[1].value) };
-  transactions.push(newTransaction);
-
+  addNewTransaction();
   init();
   updateLocalStorage();
   clearInputs();
