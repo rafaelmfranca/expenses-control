@@ -5,6 +5,7 @@ const transactionsUl = get('#transactions');
 const transactionsForm = get('#form');
 const transactionsFilter = get('#filter');
 const inputs = getAll('input');
+let activeFilter = get('.active');
 
 const localStorageTransactions = JSON.parse(localStorage.getItem('transactions'));
 let transactions = localStorageTransactions ? localStorageTransactions : [];
@@ -109,20 +110,27 @@ transactionsForm.addEventListener('submit', (event) => {
   clearInputs();
 });
 
-const handleActiveFilter = (event) => {
-  const active = get('.active');
+const toggleActiveFilter = (event) => {
   const target = event.target;
   if (!target.classList.contains('active') && target.classList.contains('filter-btn')) { 
     target.classList.add('active');
-    active.classList.remove('active');
+    activeFilter.classList.remove('active');
+    activeFilter = target;
+    init();
   }
 };
 
-transactionsFilter.addEventListener('click', handleActiveFilter);
+transactionsFilter.addEventListener('click', toggleActiveFilter);
+
+const getAllTransactions = () => transactions.forEach(addTransactionIntoDOM);
+const getIncTransactions = () => transactions.filter(({ amount }) => amount > 0).forEach(addTransactionIntoDOM);
+const getExpTransactions = () => transactions.filter(({ amount }) => amount < 0).forEach(addTransactionIntoDOM);
 
 const init = () => {
   transactionsUl.innerHTML = '';
-  transactions.forEach(addTransactionIntoDOM);
+  if (activeFilter.id === 'all') getAllTransactions();
+  if (activeFilter.id === 'inc') getIncTransactions();
+  if (activeFilter.id === 'exp') getExpTransactions();
   updateCurrentBalance();
   updateIncomesAndExpenses();
   handleAddTransactionBtn();
