@@ -78,6 +78,31 @@ main {
   margin-bottom: 10px;
 }
 
+.filter-transactions {
+  padding: 5px 0; 
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+  width: 70%;
+  background-color: #fafafa;
+  border-radius: 10px;
+}
+
+.filter-btn {
+  cursor: pointer;
+  border: none;
+  background-color: #fafafa;
+  color:#5b5b5b;
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 10px 25px;
+}
+
+.active {
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
+}
+
 .transactions {
   padding: 10px;
   max-height: 195px;
