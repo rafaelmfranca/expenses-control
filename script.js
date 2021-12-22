@@ -3,6 +3,7 @@ const getAll = (str) => document.querySelectorAll(`${str}`);
 
 const transactionsUl = get('#transactions');
 const transactionsForm = get('#form');
+const transactionsFilter = get('#filter');
 const inputs = getAll('input');
 
 const localStorageTransactions = JSON.parse(localStorage.getItem('transactions'));
@@ -107,6 +108,17 @@ transactionsForm.addEventListener('submit', (event) => {
   updateLocalStorage();
   clearInputs();
 });
+
+const handleActiveFilter = (event) => {
+  const active = get('.active');
+  const target = event.target;
+  if (!target.classList.contains('active') && target.classList.contains('filter-btn')) { 
+    target.classList.add('active');
+    active.classList.remove('active');
+  }
+};
+
+transactionsFilter.addEventListener('click', handleActiveFilter);
 
 const init = () => {
   transactionsUl.innerHTML = '';
