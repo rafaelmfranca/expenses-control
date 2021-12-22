@@ -79,11 +79,9 @@ main {
 }
 
 .filter-transactions {
-  padding: 5px 0; 
   margin: 0 auto;
   display: flex;
-  justify-content: space-evenly;
-  width: 70%;
+  justify-content: space-between;
   background-color: #fafafa;
   border-radius: 10px;
 }
@@ -93,14 +91,14 @@ main {
   border: none;
   background-color: #fafafa;
   color:#5b5b5b;
+  font-size: 12px; 
   font-weight: bold;
   border-radius: 10px;
-  padding: 10px 25px;
 }
 
 .active {
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px .5px 3px;
 }
 
 .transactions {
@@ -228,16 +226,25 @@ input[type="text"]:focus, input[type="number"]:focus {
 @media (max-width: 576px) {
   main { width: 90vw;}
   .inc-exp-container { width: 100%; }
+  .filter-transactions { width: 90%; }
+  .filter-btn { padding: 10px 10px; }
 }
 
 @media (min-width: 577px) {
-  main { width: 80vw; }
+  main { width: 75vw; }
+  .filter-transactions { width: 80% }
+  .filter-btn { padding: 10px 15px; }
 }
 
 @media (min-width: 768px) {
   main { width: 65vw; }
+  .filter-transactions { width: 70% }
 }
 
 @media (min-width: 992px) {
   main { width: 50vw; }
+}
+
+@media (min-width: 1200px) {
+  .filter-btn { padding: 10px 25px; }
 }
