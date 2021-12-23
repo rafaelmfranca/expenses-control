@@ -20,6 +20,24 @@ main {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
 }
 
+.clear-all {
+  position: absolute;
+  margin: 20px;
+}
+
+.clear-btn {
+  cursor: pointer;
+  border: none;
+  padding: 8px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 3px;
+}
+
+.clear-btn:hover {
+  transform: scale(1.1);
+}
+
 .page-header {
   display: flex;
   justify-content: center;
