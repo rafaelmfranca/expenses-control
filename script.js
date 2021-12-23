@@ -5,6 +5,7 @@ const transactionsUl = get('#transactions');
 const transactionsForm = get('#form');
 const transactionsFilter = get('#filter');
 const inputs = getAll('input');
+const clearBtn = get('#clear-all');
 let activeFilter = get('.active');
 
 const localStorageTransactions = JSON.parse(
@@ -151,5 +152,13 @@ const removeTransaction = (removeId) => {
   init();
   updateLocalStorage();
 };
+
+const clearAllTransactions = () => {
+  transactions = [];
+  localStorage.clear();
+  init();
+};
+
+clearBtn.addEventListener('click', clearAllTransactions);
 
 window.onload = () => init();
