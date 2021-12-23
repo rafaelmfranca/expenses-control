@@ -114,6 +114,10 @@ main {
   border-radius: 10px;
 }
 
+.filter-btn:hover {
+  opacity: 0.8;
+}
+
 .active {
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.16) 0px .5px 3px;
@@ -239,6 +243,10 @@ input[type="text"]:focus, input[type="number"]:focus {
 
 .white {
   color: white;
+}
+
+.gray {
+  color: #5b5b5b;
 }
 
 @media (max-width: 576px) {
